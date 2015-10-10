@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>AngularJS Demo</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.css">
+    <style>
+        .delete {
+            color: red;
+            font-size: 120%;
+        }
+        
+        .text-strikethrough {
+            text-decoration: line-through;
+        }
+    </style>
+</head>
+
+<body ng-app="TodoApp">
+
+    <div class="container">
+        <div class="header clearfix">
+            <h1>AngularJS Todo List</h1>
+        </div>
+        <div class="row">
+
+            <todo-list></todo-list>
+            
+            <div class="row">
+                <div class="col-xs-12 col-sm-10">
+                    
+                    <add-todo></add-todo>
+                        
+                </div>
+
+                <div class="col-sm-2 hidden-xs">
+                    <button clear-completed class="btn btn-sm btn-warning pull-right">Clear Completed</button>
+                </div>
+                
+            </div>
+        </div>
+    </div>
+
+    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.5/angular.min.js"></script>
+    <script type="text/javascript">angular.module("TodoApp", [])</script>
+    <script type="text/javascript" src="AddTodo.js"></script>
+    <script type="text/javascript" src="ClearCompletedButton.js"></script>
+    <script type="text/javascript" src="TodoList.js"></script>
+    <script type="text/javascript" src="TodosService.js"></script>
+</body>
+
+</html>
