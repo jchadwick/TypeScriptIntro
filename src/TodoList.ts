@@ -1,20 +1,24 @@
-TodoList.$inject = ['TodosService'];
+/// <reference path="../scripts/typings/angularjs/angular.d.ts" />
+/// <reference path="todosservice.ts" />
 
-function TodoList(_todosService) {
-	
-	this._todosService = _todosService;
-	
-	this.todos = [];
-	
-	this.loadTodos();
-}
+class TodoList {
 
-TodoList.prototype.loadTodos = function loadTodos() {
-	this.todos = this._todosService.getAll();
-}	
+    static $inject = ['TodosService'];
 
-TodoList.prototype.remove = function remove(todo) {
-	this._todosService.remove(todo);
+    private todos: Todo[] = [];
+
+    constructor(private _todosService: TodosService) {
+
+        this.loadTodos();
+    }
+
+    loadTodos() {
+        this.todos = this._todosService.getAll();
+    }
+
+    remove(todo: Todo) {
+        this._todosService.remove(todo.id);
+    }
 }
 
 
