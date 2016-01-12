@@ -1,0 +1,11 @@
+{
+  "name": "typescriptdemo",
+  "version": "1.0.0",
+  "description": "Simple demo application for teaching TypeScript",
+  "author": "Jess Chadwick",
+  "license": "ISC",
+  "dependencies": {
+      "bootstrap": "^3.3.6",
+      "jquery": "^2.2.0"
+  }
+}

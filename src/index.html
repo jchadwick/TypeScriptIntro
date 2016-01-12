@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>TypeScript Todo List</title>
+    <link rel="stylesheet" href="node_modules/bootstrap/dist/css/bootstrap.css">
+    <style>
+        .text-strikethrough {
+            text-decoration: line-through;
+        }
+        
+        .text-giant {
+            font-size: 200%;
+        }
+        
+        .completed-indicator {
+            color: lawngreen
+        }
+        
+        .todo-item .completed {
+            display: none;
+        }
+        
+        .todo-item.completed .completed {
+            display: block;
+        }
+        
+        .todo-item.completed .incomplete {
+            display: none;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div class="header clearfix">
+            <h1>TypeScript Todo List</h1>
+        </div>
+        <div class="row">
+            <div class="panel panel-default clearfix">
+
+                <div class="panel-body">
+
+                    <div class="row">
+                        <div id="todo-list" class="col-md-12">
+                            <!-- Todo Items rendered here -->
+                        </div>
+                    </div>
+
+                    <br>
+
+                    <div class="row">
+                        <div class="col-md-10">
+
+                            <!-- Add Todo -->
+                            <form id="add-todo">
+                                <div class="form-group">
+                                    <div class="input-group">
+                                        <span class="input-group-btn">
+                                            <button type="submit" class="btn btn-primary input-lg">Add</button>
+                                        </span>
+                                        <input type="text" class="form-control input-lg" placeholder="What do you need to get done?" />
+                                    </div>
+                                </div>
+                            </form>
+                            <!-- /Add Todo -->
+
+                        </div>
+
+                        <div class="col-md-2">
+                            <!-- Clear completed button -->
+                            <button id="clear-completed" class="btn btn-sm btn-warning pull-right">Clear Completed</button>
+                            <!-- /Clear completed button -->
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script type="text/javascript" src="node_modules/jquery/dist/jquery.js"></script>
+    <script type="text/javascript" src="TodosService.js"></script>
+    <script type="text/javascript" src="app.js"></script>
+</body>
+
+</html>
