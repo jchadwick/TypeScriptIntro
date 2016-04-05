@@ -81,6 +81,22 @@
             </div>
         </div>
     </div>
+    
+    <script id="todo-item-template" type="text/x-template">
+        <div class="todo-item list-group-item COMPLETED-CLASS">
+            <div class="row">
+                <div class="col-md-2 text-center">
+                    <i class="incomplete glyphicon glyphicon-unchecked text-muted text-giant"></i>
+                    <i class="completed-indicator completed glyphicon glyphicon-ok text-giant"></i>
+                </div>
+                <div class="col-md-10">
+                    <span class="incomplete text-giant">TODO_NAME</span>
+                    <span class="completed text-strikethrough text-muted text-giant">TODO_NAME</span>
+                </div>
+            </div>
+            <div class="clearfix"></div>
+        </div>
+    </script>
 
     <script type="text/javascript" src="node_modules/jquery/dist/jquery.js"></script>
     <script type="text/javascript" src="TodosService.js"></script>

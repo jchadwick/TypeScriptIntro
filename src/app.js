@@ -4,7 +4,6 @@ var todosService = new TodosService([
     { name: 'Save Gotham', completed: false },
 ]);
 
-
 $(function initialize() {
     $('#add-todo').on('submit', addTodo);
     $('#clear-completed').on('click', clearCompleted);
@@ -32,34 +31,26 @@ function clearCompleted() {
 
 function render() {
     var todoList = $('#todo-list').html(''),
-        todos = todosService.getAll();
+        todos = todosService.getAll(),
+        todoItemTemplate = $('#todo-item-template').text();
 
     if (!todos.length) {
-        $('#todo-list').html(`
-        <div class="list-group-item text-center text-giant">
-            <strong>You've completed everything you needed to do!</strong>
-        </div>
-        `)
+        $('#todo-list').html(
+            "<div class='list-group-item text-center text-giant'>" +
+                "<strong>You've completed everything you needed to do!</strong>" +
+            "</div>"
+        );
 
         return;
     }
     
     todos.forEach(function (todo, index) {
-        $(`
-            <div class="todo-item list-group-item  ${todo.completed ? 'completed' : '' }">
-                <div class="row">
-                    <div class="col-md-2 text-center">
-                        <i class="incomplete glyphicon glyphicon-unchecked text-muted text-giant"></i>
-                        <i class="completed-indicator completed glyphicon glyphicon-ok text-giant"></i>
-                    </div>
-                    <div class="col-md-10">
-                        <span class="incomplete text-giant">${todo.name}</span>
-                        <span class="completed text-strikethrough text-muted text-giant">${todo.name}</span>
-                    </div>
-                </div>
-                <div class="clearfix"></div>
-            </div>
-        `)
+        var completedClass = todo.completed ? "completed" : "",
+            template = todoItemTemplate
+                        .replace(new RegExp('TODO_NAME', 'g'), todo.name)
+                        .replace("COMPLETED-CLASS", completedClass);
+        
+        $(template)
             .on('click', function todoClicked() {
                 var completed = todosService.toggleCompleted(todo.id);
                 $(this).toggleClass('completed', completed)
