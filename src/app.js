@@ -30,9 +30,9 @@ function clearCompleted() {
 }
 
 function render() {
-    var todoList = $('#todo-list').html(''),
-        todos = todosService.getAll(),
-        todoItemTemplate = $('#todo-item-template').text();
+    var todoItemTemplate = $('#todo-item-template').text(),
+        todoList = $('#todo-list').html(''),
+        todos = todosService.getAll();
 
     if (!todos.length) {
         $('#todo-list').html(

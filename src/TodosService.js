@@ -73,6 +73,7 @@ var TodosService = (function () {
     }
 
 
+    // "Private" method not available anywhere else but in this scope
     // Same type goes in and comes out, 
     // but TypeScript won't be able to infer that
     function clone(obj) {
