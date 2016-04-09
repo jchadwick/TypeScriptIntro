@@ -23,11 +23,14 @@ var TodosService = (function () {
         if(!todo) 
             return;
         
-        var newTodo = todo;
+        var newTodo;
         
-        if(typeof newTodo == 'string') {
+        if(typeof todo == 'string') {
             newTodo = { name: todo };
-        } 
+        } else {
+            // Otherwise, it must be a Todo object... right?
+            newTodo = todo;
+        }
 
         newTodo.id = TodosService.__id += 1;
         newTodo.completed = !!newTodo.completed; // Force boolean
