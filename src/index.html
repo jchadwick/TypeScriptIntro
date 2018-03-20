@@ -7,10 +7,19 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>TypeScript Todo List</title>
     <link rel="stylesheet" href="lib/bootstrap.min.css">
-    <link rel="stylesheet" href="lib/app.css">
+    <link rel="stylesheet" href="app.css">
 </head>
 
 <body>
+    <div class="loading">
+        <h4>Reticulating splines...</h4>
+        <div class="progress">
+            <div class="progress-bar progress-bar-striped active" 
+                 role="progressbar" 
+                 style="width: 100%" 
+                 aria-valuenow="100" aria-valuemin="0" aria-valuemax="100"></div>
+        </div>
+    </div>
     <div class="container">
         <div class="header clearfix">
             <h1>TypeScript Todo List</h1>
@@ -61,11 +70,11 @@
     <script id="todo-item-template" type="text/x-template">
         <div class="todo-item list-group-item COMPLETED-CLASS">
             <div class="row">
-                <div class="col-md-2 text-center">
+                <div class="col-md-1 text-center pull-left">
                     <i class="incomplete glyphicon glyphicon-unchecked text-muted text-giant"></i>
                     <i class="completed-indicator completed glyphicon glyphicon-ok text-giant"></i>
                 </div>
-                <div class="col-md-10">
+                <div class="col-md-11">
                     <span class="incomplete text-giant">TODO_NAME</span>
                     <span class="completed text-strikethrough text-muted text-giant">TODO_NAME</span>
                 </div>

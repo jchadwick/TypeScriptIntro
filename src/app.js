@@ -1,16 +1,20 @@
-var todosService = new TodosService([
-    { name: 'Pick up drycleaning', completed: false },
-    { name: 'Clean Batcave', completed: true },
-    { name: 'Save Gotham', completed: false },
-]);
+var todosService;
 
 $(function initialize() {
     $('#add-todo').on('submit', addTodo);
     $('#clear-completed').on('click', clearCompleted);
-    render();
+
+    $.getJSON('todos.json')
+        .then(function(todos) {
+
+            todosService = new TodosService(todos);
+
+            render();
+
+            $('.loading').hide();
+            $('.container.hidden').show();
+        });
 });
-
-
 
 function addTodo() {
     var todo = $('#add-todo input').val();
