@@ -29,7 +29,7 @@ function addTodo() {
 }
 
 function clearCompleted() {
-    todosService.clearCompleted()
+    todosService.clearComplete()
     render();
 }
 
