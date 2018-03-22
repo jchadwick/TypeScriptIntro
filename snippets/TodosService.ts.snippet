@@ -1,0 +1,81 @@
+interface Todo {
+    id?: number;
+    name: string;
+    completed?: boolean;
+}
+
+class TodosService {
+
+    static __id = 0;
+
+    private _todos: Todo[] = [];
+
+    constructor(todos: Todo[]) {
+
+        (todos || []).forEach((todo) => {
+            this.addTodo(todo);
+        });
+
+    }
+
+    addTodo(todo: Todo | string) : Todo {
+        
+        if(!todo) 
+            return;
+        
+        let newTodo: Todo;
+        
+        if(typeof todo === 'string') {
+            newTodo = { name: todo };
+        } else {
+            // Otherwise, it must be a Todo object... right?
+            newTodo = todo;
+        }
+
+        newTodo.id = TodosService.__id += 1;
+        newTodo.completed = !!newTodo.completed; // Force boolean
+
+        this._todos.push(newTodo);
+        
+        return newTodo;
+    }
+
+    clearCompleted() : void {
+        this._todos = this._todos.filter((todo) => !todo.completed)
+    }
+
+    deleteTodo(todoId: number) : void {
+        let todo = this._find(todoId);
+        this._todos.splice(this._todos.indexOf(todo), 1);
+    }
+
+    get(todoId: number) : Todo {
+        return clone(this._find(todoId));
+    }
+
+    getAll() : Todo[] {
+        return clone(this._todos);
+    }
+
+    toggleCompleted(todoId: number) : boolean {
+        let todo = this._find(todoId);
+
+        if (!todo)
+            return null;
+
+        return todo.completed = !todo.completed;
+    }
+
+    private _find(todoId: number) : Todo {
+        let filtered = this._todos.filter((x) => x.id == todoId);
+        return filtered.length ? filtered[0] : null;
+    }
+
+}
+
+// "Private" method not available anywhere else but in this scope
+// Same type goes in and comes out, 
+// but TypeScript won't be able to infer that
+function clone<T>(obj: T): T {
+    return JSON.parse(JSON.stringify(obj));
+}
