@@ -44,15 +44,6 @@ class TodosService {
         this._todos = this._todos.filter((todo) => !todo.completed)
     }
 
-    deleteTodo(todoId: number) : void {
-        let todo = this._find(todoId);
-        this._todos.splice(this._todos.indexOf(todo), 1);
-    }
-
-    get(todoId: number) : Todo {
-        return clone(this._find(todoId));
-    }
-
     getAll() : Todo[] {
         return clone(this._todos);
     }

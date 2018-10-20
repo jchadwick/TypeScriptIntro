@@ -48,15 +48,6 @@ var TodosService = (function () {
         
     }
 
-    TodosService.prototype.deleteTodo = function (todoId) {
-        var todo = this._find(todoId);
-        this._todos.splice(this._todos.indexOf(todo), 1);
-    }
-
-    TodosService.prototype.get = function (todoId) {
-        return clone(this._find(todoId));
-    }
-
     TodosService.prototype.getAll = function () {
         return clone(this._todos);
     }
